@@ -1,16 +1,13 @@
 import React, {useState} from 'react';
+import '../estilos/Contador.css'
 
-export default function Contador() {
+export default function Contador(props) {
     const [numero, setNumero] = useState(0);
 
     const aumentar = () => {setNumero(numero + 1)};
-    const disminuir = () => {setNumero(numero - 1)};
     return (
-        <div>
-            <h1>Contador</h1>
-            <p>Numero actual: {numero}</p>
-            <button className='button' onClick={aumentar}>Aumentar</button>
-            <button className='button' onClick={disminuir}>Disminuir</button>
+        <div className='button-container'>
+            <button className='button' onClick={aumentar}>{numero} {props.children}</button>
         </div>
     )
 }

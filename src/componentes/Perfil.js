@@ -1,29 +1,38 @@
-import React, { useState } from 'react';
 import '../estilos/Perfil.css';
+import Contador from './Contador';
+import img from '../imagenes/brais.png';
 
-function Perfil(props){
+export const Perfil = (props) => {
+    return (
+        <>
+            <div className="container">
 
-    return(
-        <div className='contenedor-perfil'>
-            <img className='imagen-perfil'
-            src={require(`../imagenes/perfil-${props.imagen}.png`)}
-            alt='Foto de desarrollador' />
-        <div className='contenedor-texto-perfil'>
-            <p className='nombre-perfil'>
-               <strong>{props.nombre}</strong> en {props.pais}
-            </p>        
-        <p className='cargo-perfil'>
-            {props.cargo} en <strong>{props.empresa}</strong>
-        </p>
-        <p className='texto-perfil'>"{props.perfil}" </p>
-        </div>
-        
-        <button className='button'  onClick={() => window.open(props.linkedin, '_blank')}>Seguir en Linkedin</button>        
-        <button className='button' onClick={() => window.open(props.youtube, '_blank')}>Seguir en YouTube</button>
-        <button className='button' onClick={() => window.open(props.twitter, '_blank')}>Seguir en Twitter</button>
+                <div className="img-container">
+                    <img
+                        className="img-profile"
+                        src={img}
+                        alt={`Foto de ${props.nombre}`}
+                    />
+                </div>
+
+                <div className="info-container">
+                    <p>{props.nombre} en {props.empresa}</p>
+                    <p>Pais: {props.pais}</p>
+                    <p>Cargo: {props.cargo}</p>
+                    <p>{props.descripcion}</p>
+
+                    <div className='button-container'>
+                        <Contador>Seguir en Linkedin </Contador>
+                        <Contador>Seguir en YouTube</Contador>
+                        <Contador>Seguir en Twitter</Contador>
+                    </div>
+                </div>
 
 
-    </div>
+
+            </div>
+
+
+        </>
     );
-}
-export default Perfil;
+};

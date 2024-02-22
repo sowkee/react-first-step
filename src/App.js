@@ -1,31 +1,64 @@
-import React, { useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Perfil from './componentes/Perfil';
-import Contador from './componentes/Contador';
+import { Perfil } from './componentes/Perfil';
 
 function App() {
-  const [contador, setContador] = useState(0);
+  const users = [
+    {
+      nombre: "Brais Moure",
+      empresa: "Moures Dev",
+      pais: "España",
+      cargo: "Ing. Software",
+      descripcion: "Desarrollador y divulgador.",
+      linkedin: "",
+      youtube: "",
+      twitter: "",
+    },
+    {
+      nombre: "Ada Lovelace",
+      empresa: "-",
+      pais: "Inglaterra",
+      cargo: "Matemática, traductora y escritora",
+      descripcion: "Se le considera como la primer programadora informática",
+      linkedin: "",
+      youtube: "",
+      twitter: "",
+    },
+    {
+      nombre: "Linus Torvald",
+      empresa: "Linux",
+      pais: "Finlandia",
+      cargo: "Ing. Software",
+      descripcion: "Creador de Linux",
+      linkedin: "",
+      youtube: "",
+      twitter: "",
+    }
+  ];
   return (
-    <div className="App">
-      <div class='contenedor-principal'>
-        <h1>Mis desarrolladores favoritos son</h1>
-        <Perfil
-          nombre='Brais Moure'
-          pais='España'
-          imagen='brais'
-          cargo='Ingeniero de Software'
-          empresa='MoureDev'
-          perfil='Es un Youtuber español, es el fundador de la empresa de desarrollo de software MoureDev'
-          linkedin='https://www.linkedin.com/in/braismoure/'
-          youtube='https://www.youtube.com/c/MoureDev'
-          twitter='https://twitter.com/MoureDev'
-        />
 
-        <Contador />
+    <>
+      <div className="app-container">
+        <div className='container-title'>
+          <h1 className='title'>Los Favs: </h1>
+        </div>
 
+          <div className='profile-container'>
+            {users.map((user) => (
+              <Perfil
+                nombre={user.nombre}
+                empresa={user.empresa}
+                pais={user.pais}
+                cargo={user.cargo}
+                descripcion={user.descripcion}
+                linkedin={user.linkedin}
+                youtube={user.youtube}
+                twitter={user.twitter}
+              />
+            ))}
+          </div>
       </div>
-    </div>
+    </>
+
   );
 }
 
